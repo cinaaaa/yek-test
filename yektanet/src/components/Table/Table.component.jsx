@@ -47,12 +47,12 @@ const Table = ({
                     if (data.length === index + 1) {
                         // it's last item
                         return (
-                            <Cell data={i} lastElementRef={lastElementRef} />
+                            <Cell key={i.id} data={i} lastElementRef={lastElementRef} />
                         );
                     } 
                     else {
                         return (
-                            <Cell data={i} />
+                            <Cell key={i.id} data={i} />
                         );
                     };
 

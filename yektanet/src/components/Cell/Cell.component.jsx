@@ -24,7 +24,7 @@ const Cell = ({data, lastElementRef}) => {
     };
 
     return (
-        <tr key={data.id} ref={lastElementRef}>
+        <tr ref={lastElementRef}>
             <td>{data.new_value}</td>
             <td>{data.old_value}</td>
             <td>{data.field}</td>
@@ -35,7 +35,7 @@ const Cell = ({data, lastElementRef}) => {
                 <input 
                     type='checkbox' 
                     checked={isStarred(data.id)}
-                    onClick={() => isStarred(data.id) ? removeStarItem(data.id) : starItem(data.id)}
+                    onChange={() => isStarred(data.id) ? removeStarItem(data.id) : starItem(data.id)}
                 />
             </td>
         </tr>

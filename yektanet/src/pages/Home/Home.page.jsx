@@ -2,13 +2,16 @@ import { useEffect,useState } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 
+// Components
 import Container from "../../components/Container/Container.component";
 import Table from "../../components/Table/Table.component";
-import Text from "../../components/Text/Text.component";
+import Qoutes from "../../components/Qoutes/Qoutes.component";
 import Input from "../../components/Input/Input.component";
 
+// Actions
 import { initilizeData } from "../../context/actions";
 
+// Utils
 import { searchWorker } from "../../utils";
 
 // Containers
@@ -22,14 +25,15 @@ const HomePage = () => {
     const [slice, setSlice] = useState(20);
     const [filterdData, setFilterdData] = useState([]);
     const [filterInputs, setFilterInputs] = useState({
-        title: null,
-        name: null,
-        date: null,
+        title: "",
+        name: "",
+        date: "",
     });
 
     const sliceData = useSelector(state => state.data.data);
 
     const searchFilters = () => {
+        // Call the search function
         setFilterdData(searchWorker(
             sliceData,
             filterInputs,
@@ -37,6 +41,8 @@ const HomePage = () => {
     };
 
     useEffect(() => {
+        // when filters change
+        // this effect will run
         setTimeout(() => {
             searchFilters();
         }, 20);
@@ -50,6 +56,8 @@ const HomePage = () => {
 
     useEffect(() => {
         
+        // check that we have data fetched
+        // then parse query strings & assign them to filters
         if (sliceData) {
             let shallow_object = {};
             let params = Object.fromEntries(new URLSearchParams(window.location.search));
@@ -94,20 +102,7 @@ const HomePage = () => {
     return (
         <Container>
 
-            <Text>
-                <Container>
-                    زمان بسیار کوتاه بود و با توجه به فورس بودن و خوردن 4 تا انرژی زا برای زدن این تسک طی یک شب, 
-                    توجه زیادی به استایل نشده و صرفا سعی شده که لاجیک پیاده سازی شود : ) ممنونم
-                </Container>
-            </Text>
-
-            <Text>
-                <Container>
-                    برای سرچ از متود فیلتر ساده استفاده شده است چون برای صد هزار دیتا سریعترین روش ممکن است و 
-                    احتمال کرش در اسکیل فعلی وجود ندارد اما برای دیتا های پیچیده تر میتونیم دیتا رو به چانک های
-                    مختلف تقسیم کنیم و با وب ورکر هندل کنیم قضیه رو
-                </Container>
-            </Text>
+            <Qoutes />
 
             <InputsContainer>
                 <Input 

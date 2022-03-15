@@ -1,4 +1,5 @@
 import { setData } from "./dataSlice";
+import { sortByDate } from "../utils";
 
 
 export const initilizeData = () => async dispatch => {
@@ -15,8 +16,10 @@ export const initilizeData = () => async dispatch => {
         return response.json();
     })
     .then(function(myJson) {
+        // sort by date then
         // dispatch
-        dispatch(setData(myJson))
+        // to handle BST later
+        dispatch(setData(sortByDate(myJson)));
     });
 
 };
