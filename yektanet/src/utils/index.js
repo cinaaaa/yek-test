@@ -6,7 +6,7 @@ function binarySearch(arr, val) {
     while (start <= end) {
         let mid = Math.floor((start + end) / 2);
     
-        if (arr[mid].date == val) {
+        if (arr[mid].date === val) {
             // we have such a lot same date values
             // I didn't found any good practise to handle
             // this with binary search
@@ -19,7 +19,7 @@ function binarySearch(arr, val) {
             let neg_end = 1;
 
             while (plus_end) {
-                if (arr[mid + plus_end].date == val) {
+                if (arr[mid + plus_end].date === val) {
                     found_items.push(arr[mid + plus_end]);
                     plus_end += 1;
                 } 
@@ -30,7 +30,7 @@ function binarySearch(arr, val) {
             };
 
             while (neg_end) {
-                if (arr[mid - neg_end].date == val) {
+                if (arr[mid - neg_end].date === val) {
                     found_items.push(arr[mid - neg_end]);
                     neg_end -= 1;
                 } 
