@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&family=Tajawal&display=swap');
+
+.input {
+    text-align: right;
+    padding: 8px !important;
+    border: none !important;
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
