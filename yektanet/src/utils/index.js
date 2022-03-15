@@ -58,17 +58,19 @@ export const searchWorker = (
     filters,
 ) => {
 
+    let response = Object.assign([], objectToSearchIn);
+
     // find out the filters key
     // to handle iterate on it later
     let keys = Object.keys(filters);
 
     // check that if it's date search mode
     // so we return the BST search algo
-    if (filters.date) return binarySearch(objectToSearchIn, filters.date);
+    if (filters.date) response = binarySearch(response, filters.date);
 
     // first I filter the object to search (the JSON)
     // check the keys on the object we have already
-    return objectToSearchIn.filter(function(obj) {
+    response = response.filter(function(obj) {
         return keys.every(function(key) {
             // when filter key [value] is null
             // we need to pass true to get every work properly
@@ -78,6 +80,8 @@ export const searchWorker = (
             return obj[key].includes(filters[key])
         })
     });
+
+    return response;
 
 };
 
