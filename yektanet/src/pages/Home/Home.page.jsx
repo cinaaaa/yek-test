@@ -46,6 +46,7 @@ const HomePage = () => {
         setTimeout(() => {
             searchFilters();
         }, 20);
+        // eslint-disable-next-line
     }, [filterInputs]);
 
     useEffect(() => {

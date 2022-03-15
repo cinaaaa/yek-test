@@ -24,6 +24,7 @@ const Table = ({
 
             if (node) observer.current.observe(node);
         },
+        // eslint-disable-next-line
         [data]
     );
 
