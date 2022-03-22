@@ -1,4 +1,4 @@
-import { useEffect,useState } from "react";
+import { useEffect,useState,useCallback, useMemo } from "react";
 import { useHistory } from "react-router-dom";
 import { useSelector,useDispatch } from "react-redux";
 
@@ -12,10 +12,19 @@ import Input from "../../components/Input/Input.component";
 import { initilizeData } from "../../context/actions";
 
 // Utils
-import { searchWorker } from "../../utils";
+import { searchWorker,debounce } from "../../utils";
 
 // Containers
 import InputsContainer from "../../containers/Inputs/Inputs.container";
+
+// Debounced wrap for search worker func
+const debouncedSearch = debounce((sliceData, filterInputs, cb) => {
+    cb(
+        searchWorker(sliceData, filterInputs)
+    );
+}, 500);
+
+
 
 const HomePage = () => {
 
@@ -28,24 +37,19 @@ const HomePage = () => {
         title: "",
         name: "",
         date: "",
+        field: "",
     });
 
     const sliceData = useSelector(state => state.data.data);
 
-    const searchFilters = () => {
-        // Call the search function
-        setFilterdData(searchWorker(
-            sliceData,
-            filterInputs,
-        ));
-    };
-
     useEffect(() => {
         // when filters change
         // this effect will run
-        setTimeout(() => {
-            searchFilters();
-        }, 20);
+        // here we run a debounced search
+        debouncedSearch(sliceData, filterInputs, (data) => {
+            setFilterdData(data);
+        });
+
         // eslint-disable-next-line
     }, [filterInputs]);
 
@@ -88,6 +92,7 @@ const HomePage = () => {
             pathname: window.location.pathname,
             search: urlParameters
         });
+
     };
 
     // handle logic of data should render
@@ -106,6 +111,11 @@ const HomePage = () => {
             <Qoutes />
 
             <InputsContainer>
+                <Input 
+                    placeholder="فیلد"
+                    onChange={(e) => setFiltersToPath('field', e)}
+                    value={filterInputs['field']}
+                />
                 <Input 
                     placeholder="نام تغییر دهنده"
                     onChange={(e) => setFiltersToPath('name', e)}
@@ -131,6 +141,7 @@ const HomePage = () => {
 
         </Container>
     );
+
 };
 
 export default HomePage;
