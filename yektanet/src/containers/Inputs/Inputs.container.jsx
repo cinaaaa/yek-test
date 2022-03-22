@@ -1,6 +1,8 @@
-import "./InputsContainer.styles.css";
+import "./Inputs.styles.css";
 
-const InputsContainer = ({children}) => (
+const InputsContainer = ({
+    children
+}) => (
     <div className="inputs__container">
         {children}
     </div>
