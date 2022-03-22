@@ -31,15 +31,31 @@ const Table = ({
     return (
         <div className="table__container">
             <table>
-                <tr>
-                    <th>مقدار جدید</th>
-                    <th>مقدار قدیمی</th>
-                    <th>فیلد</th>
-                    <th>نام اگهی</th>
-                    <th>تاریخ</th>
-                    <th>نام تغییر دهنده</th>
-                    <th>ستاره</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <a href="#" className="sort-by"> مقدار جدید </a>
+                        </th>
+                        <th scope="col">
+                            <a href="#" className="sort-by"> مقدار قدیمی </a>
+                        </th>
+                        <th scope="col">
+                            <a> فیلد </a>
+                        </th>
+                        <th scope="col">
+                            <a href="#" className="sort-by"> نام آگهی</a>
+                        </th>
+                        <th scope="col">
+                            <a> تاریخ </a>
+                        </th>
+                        <th scope="col">
+                            <a href="#" className="sort-by"> نام تغییر دهنده </a>
+                        </th>
+                        <th scope="col">
+                            <a> ستاره </a>
+                        </th>
+                    </tr>
+                </thead>
                 { data?.map((i, index) => {
 
                     // check if it's last item
