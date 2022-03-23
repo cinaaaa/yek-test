@@ -84,16 +84,27 @@ export const searchWorker = (
 
     // first I filter the object to search (the JSON)
     // check the keys on the object we have already
-    response = response.filter(function(obj) {
-        return keys.every(function(key) {
+    let filtered_response = [];
+    for (let i = 0; i < response.length; i++) {
+        let every_ones_match = keys.every(function(key) {
             // when filter key [value] is null
             // we need to pass true to get every work properly
             if (filters[key] === null) return true;
             // the filter key value is not null
             // so do the equal check
-            return obj[key].includes(filters[key])
+            if (response[i][key].includes(filters[key])) {
+                return true;
+            } else {
+                return false;
+            }
         })
-    });
+        // pushed the matched one to response array
+        if (every_ones_match) {
+            filtered_response.push(response[i]);
+        };
+    };
+    // set the result to response
+    response = filtered_response;
 
     return response;
 
