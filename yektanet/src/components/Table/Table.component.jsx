@@ -34,25 +34,25 @@ const Table = ({
                 <thead>
                     <tr>
                         <th scope="col">
-                            <a href="#" className="sort-by"> مقدار جدید </a>
+                            <p className="sort-by"> مقدار جدید </p>
                         </th>
                         <th scope="col">
-                            <a href="#" className="sort-by"> مقدار قدیمی </a>
+                            <p className="sort-by"> مقدار قدیمی </p>
                         </th>
                         <th scope="col">
-                            <a> فیلد </a>
+                            <p> فیلد </p>
                         </th>
                         <th scope="col">
-                            <a href="#" className="sort-by"> نام آگهی</a>
+                            <p className="sort-by"> نام آگهی</p>
                         </th>
                         <th scope="col">
-                            <a> تاریخ </a>
+                            <p> تاریخ </p>
                         </th>
                         <th scope="col">
-                            <a href="#" className="sort-by"> نام تغییر دهنده </a>
+                            <p className="sort-by"> نام تغییر دهنده </p>
                         </th>
                         <th scope="col">
-                            <a> ستاره </a>
+                            <p> ستاره </p>
                         </th>
                     </tr>
                 </thead>
