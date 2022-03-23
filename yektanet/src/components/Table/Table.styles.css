@@ -3,7 +3,7 @@
 .table__container {
     overflow-x: auto;
     text-align: center;
-    margin: 50px;
+	margin-top: 25px;
 }
 
 table {

@@ -1,6 +1,8 @@
 .inputs__container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    direction: rtl;
+    padding: 10px;
+    margin: auto;
+    justify-content: space-between;
 }

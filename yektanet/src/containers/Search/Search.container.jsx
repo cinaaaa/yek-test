@@ -104,11 +104,6 @@ const SearchContainer = () => {
     return (
         <InputsContainer>
             <Input 
-                placeholder="فیلد"
-                onChange={(e) => setFiltersToPath('field', e)}
-                value={filterInputs['field']}
-            />
-            <Input 
                 placeholder="نام تغییر دهنده"
                 onChange={(e) => setFiltersToPath('name', e)}
                 value={filterInputs['name']}
@@ -123,6 +118,11 @@ const SearchContainer = () => {
                 placeholder="نام آگهی"
                 onChange={(e) => setFiltersToPath('title', e)}
                 value={filterInputs['title']}
+            />
+            <Input 
+                placeholder="فیلد"
+                onChange={(e) => setFiltersToPath('field', e)}
+                value={filterInputs['field']}
             />
         </InputsContainer>
     );

@@ -46,7 +46,7 @@ const Table = ({
                             <p className="sort-by"> نام آگهی</p>
                         </th>
                         <th scope="col">
-                            <p> تاریخ </p>
+                            <p className="sort-by"> تاریخ </p>
                         </th>
                         <th scope="col">
                             <p className="sort-by"> نام تغییر دهنده </p>
