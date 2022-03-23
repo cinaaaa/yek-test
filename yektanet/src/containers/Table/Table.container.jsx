@@ -20,6 +20,7 @@ const TableContainer = () => {
             Object.fromEntries(new URLSearchParams(window.location.search))
         ).some(value => value));
 
+        // eslint-disable-next-line
     }, [window.location.search]);
 
 

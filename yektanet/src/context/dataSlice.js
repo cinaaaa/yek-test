@@ -13,7 +13,7 @@ export const dataSlice = createSlice({
   reducers: {
     setData: (state, action) => {
       state.data = action.payload;
-      state.sortedData = sortByDate(action.payload)
+      state.sortedData = sortByDate(Object.assign([], action.payload));
     },
     setFilteredData: (state, action) => {
       state.filteredData = action.payload;
