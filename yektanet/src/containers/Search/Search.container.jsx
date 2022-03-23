@@ -6,7 +6,7 @@ import { useSelector,useDispatch } from "react-redux";
 import Input from "../../components/Input/Input.component";
 
 // Actions
-import { setFilteredtData } from "../../context/dataSlice";
+import { setFilteredData } from "../../context/dataSlice";
 import { initilizeData } from "../../context/actions";
 
 // Utils
@@ -16,9 +16,9 @@ import { searchWorker,debounce } from "../../utils";
 import InputsContainer from "../../containers/Inputs/Inputs.container";
 
 // Debounced wrap for search worker func
-const debouncedSearch = debounce((sliceData, filterInputs, cb) => {
+const debouncedSearch = debounce((sliceData, sortedData, filterInputs, cb) => {
     cb(
-        searchWorker(sliceData, filterInputs)
+        searchWorker(sliceData, sortedData, filterInputs)
     );
 }, 500);
 
@@ -29,27 +29,36 @@ const SearchContainer = () => {
     const history = useHistory();
 
     const sliceData = useSelector(state => state.data.data);
+    const sliceDataSorted = useSelector(state => state.data.sortedData);
     const [filterInputs, setFilterInputs] = useState({
         title: "",
         name: "",
         date: "",
         field: "",
+        sort_name: "",
+        sort_title: "",
+        sort_oldval: "",
+        sort_newval: "",
+        sort_date: "",
     });
 
     useEffect(() => {
         // initilize the redux with reading
         // the json file
-        dispatch(initilizeData());
+
+        if (!sliceData.length) {
+            dispatch(initilizeData());
+        };
 
         // eslint-disable-next-line
-    }, []);
+    }, [sliceData]);
 
     useEffect(() => {
         // when filters change
         // this effect will run
         // here we run a debounced search
-        debouncedSearch(sliceData, filterInputs, (data) => {
-            dispatch(setFilteredtData(data));
+        debouncedSearch(sliceData, sliceDataSorted, filterInputs, (data) => {
+            dispatch(setFilteredData(data));
         });
 
         // eslint-disable-next-line

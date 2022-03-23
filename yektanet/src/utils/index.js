@@ -1,4 +1,15 @@
-function binarySearch(arr, val) {
+export const sortByDate = (
+    objectToSort
+) => {
+    return objectToSort.sort(function(a,b){
+        // Turn your strings into dates, and then subtract them
+        // to get a value that is either negative, positive, or zero.
+        return new Date(b.date) - new Date(a.date);
+    }).reverse();
+};
+
+const binarySearch = (arr, val) => {
+
     let start = 0;
     let end = arr.length - 1;
     let found_items = [];
@@ -55,10 +66,13 @@ function binarySearch(arr, val) {
 
 export const searchWorker = (
     objectToSearchIn,
+    objectToSearchInSortedbyDate,
     filters,
 ) => {
 
-    let response = Object.assign([], objectToSearchIn);
+    let response = Object.assign([], 
+        filters.date ? objectToSearchInSortedbyDate : objectToSearchIn
+    );
 
     // find out the filters key
     // to handle iterate on it later
@@ -83,16 +97,6 @@ export const searchWorker = (
 
     return response;
 
-};
-
-export const sortByDate = (
-    objectToSort
-) => {
-    return objectToSort.sort(function(a,b){
-        // Turn your strings into dates, and then subtract them
-        // to get a value that is either negative, positive, or zero.
-        return new Date(b.date) - new Date(a.date);
-    }).reverse();
 };
 
 export const debounce = (
