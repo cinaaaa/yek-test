@@ -3,10 +3,7 @@ import Container from "../../components/Container/Container.component";
 import Qoutes from "../../components/Qoutes/Qoutes.component";
 
 // Containers
-import SearchContainer from "../../containers/Search/Search.container";
-import TableContainer from "../../containers/Table/Table.container";
-
-
+import FilterContainer from "../../containers/Filter/Filter.container";
 
 const HomePage = () => {
 
@@ -15,9 +12,7 @@ const HomePage = () => {
 
             <Qoutes />
 
-            <SearchContainer />
-
-            <TableContainer />
+            <FilterContainer />
 
         </Container>
     );

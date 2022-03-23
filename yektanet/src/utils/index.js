@@ -1,11 +1,20 @@
+/* eslint-disable */
+
 export const sortByDate = (
     objectToSort
 ) => {
-    return objectToSort.sort(function(a,b){
+    return Object.assign([], objectToSort).sort(function(a,b){
         // Turn your strings into dates, and then subtract them
         // to get a value that is either negative, positive, or zero.
         return new Date(b.date) - new Date(a.date);
     }).reverse();
+};
+
+export const simpleSort = (
+    objectToSort,
+    fieldToSort
+) => {
+    return Object.assign([], objectToSort).sort((a, b) => (a[fieldToSort] > b[fieldToSort]) ? 1 : -1)
 };
 
 const binarySearch = (arr, val) => {
@@ -62,7 +71,7 @@ const binarySearch = (arr, val) => {
     };
 
     return found_items;
-}
+};
 
 export const searchWorker = (
     objectToSearchIn,
@@ -85,11 +94,14 @@ export const searchWorker = (
     // first I filter the object to search (the JSON)
     // check the keys on the object we have already
     let filtered_response = [];
+    let every_ones_match;
     for (let i = 0; i < response.length; i++) {
-        let every_ones_match = keys.every(function(key) {
+            every_ones_match = keys.every(function(key) {
             // when filter key [value] is null
             // we need to pass true to get every work properly
             if (filters[key] === null) return true;
+            if (filters[key] === "") return true;
+            if (key.startsWith('sort_')) return true;
             // the filter key value is not null
             // so do the equal check
             if (response[i][key].includes(filters[key])) {
@@ -105,6 +117,16 @@ export const searchWorker = (
     };
     // set the result to response
     response = filtered_response;
+
+    // Handle sort things
+    if (filters.sort_field) {
+        // we have sort filter applied
+        // now sort the data by the field we want
+        // and the desc we want
+        let sorted = simpleSort(response, filters.sort_field);
+        response = filters.sort_way === "LH" ? sorted : sorted.reverse();
+
+    }
 
     return response;
 

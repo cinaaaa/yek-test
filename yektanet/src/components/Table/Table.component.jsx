@@ -5,7 +5,8 @@ import "./Table.styles.css";
 
 const Table = ({
     data,
-    reachedEnd
+    reachedEnd,
+    onSortClick
 }) => {
 
     const observer = useRef();
@@ -33,22 +34,22 @@ const Table = ({
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">
+                        <th scope="col" onClick={() => onSortClick("new_value")}>
                             <p className="sort-by"> مقدار جدید </p>
                         </th>
-                        <th scope="col">
+                        <th scope="col" onClick={() => onSortClick("old_value")}>
                             <p className="sort-by"> مقدار قدیمی </p>
                         </th>
                         <th scope="col">
                             <p> فیلد </p>
                         </th>
-                        <th scope="col">
+                        <th scope="col" onClick={() => onSortClick("title")}>
                             <p className="sort-by"> نام آگهی</p>
                         </th>
-                        <th scope="col">
+                        <th scope="col" onClick={() => onSortClick("date")}>
                             <p className="sort-by"> تاریخ </p>
                         </th>
-                        <th scope="col">
+                        <th scope="col" onClick={() => onSortClick("name")}>
                             <p className="sort-by"> نام تغییر دهنده </p>
                         </th>
                         <th scope="col">

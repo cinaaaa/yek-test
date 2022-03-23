@@ -13,6 +13,7 @@ export const dataSlice = createSlice({
   reducers: {
     setData: (state, action) => {
       state.data = action.payload;
+      // We make a sorted data to apply BST on it later
       state.sortedData = sortByDate(Object.assign([], action.payload));
     },
     setFilteredData: (state, action) => {
