@@ -20,7 +20,7 @@ const TableContainer = () => {
             Object.fromEntries(new URLSearchParams(window.location.search))
         ).some(value => value));
 
-    }, []);
+    }, [window.location.search]);
 
 
     // handle logic of data should render
