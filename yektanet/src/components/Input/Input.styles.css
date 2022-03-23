@@ -3,8 +3,7 @@
 .input {
     text-align: right;
     padding: 8px !important;
-    border: none !important;
-    border: 1px solid #f2f2f2;
+    border: 1px solid #979797;
     border-radius: 5px;
     font-family: 'IBM Plex Sans Arabic', sans-serif;
 }

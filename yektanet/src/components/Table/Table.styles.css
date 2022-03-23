@@ -10,6 +10,8 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
+	font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+	font-size: smaller;
 }
   
 th, td {
@@ -20,9 +22,8 @@ th, td {
 }
 
 th {
-    background-color: aqua;
-    font-family: 'IBM Plex Sans Arabic', sans-serif !important;
-    font-size: smaller;
+    background-color: #fbf9c5 !important;
+	font-weight: bold !important;
 }
 
 td {
